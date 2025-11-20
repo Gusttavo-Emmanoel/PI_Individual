@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Ficha</title>
+    <link rel="stylesheet" href="../CSS/estrutura.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+        <nav>
+            <div href="" class="nav_item">
+                <img src="../img/inicio.svg" alt="icone de inicio">
+                <a>Inicio</a>
+            </div>
+            <div class="nav_item">
+                <img src="../img/como_jogar.svg" alt="icone de inicio">
+                <a>Como Jogar</a>
+            </div>
+            <div href="" class="nav_item nav_select">
+                <img src="../img/criar_ficha-branco.svg" alt="icone de inicio">
+                <a>Ficha</a>
+            </div>
+            <div href="" class="nav_item">
+                <img src="../img/usuario.svg" alt="icone de inicio">
+                <a>Perfil</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Kleiton, O bom da guerra</h1>
+
+        <section class="KPIs">
+            <div class="KPI_item  info">
+                <div class="info_item">
+                    <img src="../img/criar_ficha.svg">
+                    <span>Mago</span>
+                </div>
+                <div class="info_item">
+                    <img src="../img/criar_ficha.svg">
+                    <span>Elfo</span>
+                </div>
+            </div>
+
+            <div class="KPI_item">
+                <h2>Poder total</h2>
+                <div class="total-poder">
+                    <span>85</span>
+                </div>
+            </div>
+
+            <div class="KPI_item">
+                <div class="status">
+                    <div class="status_item">
+                        <img src="../img/criar_ficha.svg">
+                        <span>Pontos de vida</span>
+                    </div>
+                    <span class="status_pontos">
+                        80
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status_item">
+                        <img src="../img/criar_ficha.svg">
+                        <span>Classe de armadura (Defesa)</span>
+                    </div>
+                    <span class="status_pontos">
+                        16
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status_item">
+                        <img src="../img/criar_ficha.svg">
+                        <span>Iniciativa</span>
+                    </div>
+                    <span class="status_pontos">
+                        +2
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="graficos">
+            <div class="grafico_item">
+                <h2>Atributos do Personagem</h2>
+                <div class="grafico_div">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grafico_item">
+                <h2>Nivel de habilidades</h2>
+                <div class="grafico_div">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="detalhe">
+                <h2>Detalhes do Personagem</h2>
+                <div class="detalhe_container">
+                    <div class="detalhe_item">
+                        <h3>Atributos Detalhados</h3>
+                        <div class="atributo">
+                            Força (FOR)
+                            <div class="atributo_item">
+                                <span>8</span>
+                                <span class="atributo_bonus">-1</span>
+                            </div>
+                        </div>
+                        <div class="atributo">
+                            Destreza (DES)
+                            <div class="atributo_item">
+                                <span>16</span>
+                                <span class="atributo_bonus">+3</span>
+                            </div>
+                        </div>
+                        <div class="atributo">
+                            Constituição (CON)
+                            <div class="atributo_item">
+                                <span>11</span>
+                                <span class="atributo_bonus">0</span>
+                            </div>
+                        </div>
+                        <div class="atributo">
+                            Inteligencia (INT)
+                            <div class="atributo_item">
+                                <span>14</span>
+                                <span class="atributo_bonus">+2</span>
+                            </div>
+                        </div>
+                        <div class="atributo">
+                            Sabedoria (SAB)
+                            <div class="atributo_item">
+                                <span>15</span>
+                                <span class="atributo_bonus">+2</span>
+                            </div>
+                        </div>
+                        <div class="atributo">
+                            Carisma (CAR)
+                            <div class="atributo_item">
+                                <span>18</span>
+                                <span class="atributo_bonus">+4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detalhe_item">
+                        <h3>Equipamentos & Habilidades</h3>
+
+                        <div class="equipamento-habilidade">
+                            <H4>Equipamento Inicial</H4>
+                            <ul class="equipamento-habilidade_item">
+                                <li>Adagas (2x)</li>
+                                <li>Armadura de Couro</li>
+                                <li>Kit de Ferramentas</li>
+                            </ul>
+
+                        </div>
+                        <div class="equipamento-habilidade">
+                            <H4>Habilidades Especiais</H4>
+                            <ul class="equipamento-habilidade_item">
+                                <li> Ataque Furtivo</li>
+                                <li>Ação Ardilosa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="footer_logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+        <nav>
+            <div class="nav_item">
+                <a href="">Inicio</a>
+            </div>
+            <div class="nav_item">
+                <a href="">Como Jogar</a>
+            </div>
+            <div class="nav_item">
+                <a href="">Ficha</a>
+            </div>
+        </nav>
+    </footer>
+
+</body>
+<script>
+
+    //Criação do gráfico de radar
+    const ctx = document.getElementById('radarChart');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: [
+                'Força',
+                'Destreza',
+                'Constituição',
+                'Inteligência',
+                'Sabedoria',
+                'Carisma',
+            ],
+            datasets: [{
+                data: [18, 14, 16, 15, 12, 13],
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: {
+                        display: false
+                    },
+                    suggestedMin: 8,
+                    suggestedMax: 20
+                }
+            }
+        },
+    });
+
+
+    const ctx2 = document.getElementById('barChart');
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Ataque', 'Defesa', 'Magia', 'Velocidade'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
+
+</html>
