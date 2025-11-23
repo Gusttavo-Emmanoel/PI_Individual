@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Ficha</title>
+
+    <link rel="stylesheet" href="style/estrutura.css">
+    <link rel="stylesheet" href="style/ficha.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="listar_classes()">
+   <header>
+        <div class="logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+
+        <nav>
+            <a href="index.html" class="nav_item ">
+                <img src="img/inicio.svg" alt="icone de inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="como_jogar.html" class=" nav_item">
+                <img src="img/como_jogar.svg" alt="icone de como_jogar">
+                <span>Como Jogar</span>
+            </a>
+            <a href="./ficha.html" class="nav_select">
+                <img src="img/criar_ficha-selecionado.svg" alt="icone de ficha">
+                <span>Ficha</span>
+            </a>
+            <a href="login.html" class="btn_secundario">
+                <span>Entrar</span>
+            </a>
+            <a href="cadastro.html" class="btn_primario">
+                <span>Criar conta</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Criação de Ficha</h1>
+        </section>
+
+        <section>
+            Informe o nome de seu personagem: <input id="ipt_nome">
+        </section>
+
+        <section class="classe_raca">
+            <div>
+                <h2>Selecione uma classe</h2>
+                <select onclick="selecionar_classe2()" id="slc_classe">
+                    <!-- <option value="#">Selecione</option>
+                    <option value="Guerreiro">Guerreiro</option>
+                    <option value="Ladino">Ladino</option>
+                    <option value="Mago">Mago</option> -->
+                </select>
+
+                <div id="info_classe">
+
+                </div>
+
+                <div id="equipamento_guerreiro">
+                    <h3>Equipamentos de Guerreiro</h3>
+                    <select id="slc_guerreiro_arma">
+                        <option value="Espada Longa">Espada Longa</option>
+                        <option value="Machado de Batalha">Machado de Batalha</option>
+                        <option value="Espada Curta">Espada Curta</option>
+                        <option value="2x Adagas">2x Adagas</option>
+                        <option value="Arco longo">Arco longo</option>
+                    </select>
+                    <select id="slc_guerreiro_armadura">
+                        <option value="Cota de Malha">Cota de Malha</option>
+                        <option value="Couro Batido">Couro Batido</option>
+                        <option value="Armadura de Placas">Armadura de Placas</option>
+                    </select>
+                </div>
+
+                <div id="equipamento_ladino">
+                    <h3>Equipamentos de Ladino</h3>
+                    <select id="slc_ladino_arma">
+                        <option value="2x Adagas">2x Adagas</option>
+                        <option value="Arco longo">Arco longo</option>
+                        <option value="Espada Curta">Espada Curta</option>
+                    </select>
+                    <select id="slc_ladino_armadura">
+                        <option value="Acolchoada">Acolchoada</option>
+                        <option value="Couro">Couro</option>
+                        <option value="Couro Batido">Couro Batido</option>
+                    </select>
+                </div>
+
+                <div id="equipamento_mago">
+                    <h3>Equipamentos de Mago</h3>
+                    <select id="slc_mago_arma">
+                        <option value="2x Adagas">2x Adagas</option>
+                        <option value="Livro de Magia">Livro de Magia</option>
+                        <option value="Orbe de Cristal">Orbe de Cristal</option>
+                    </select>
+                    <select id="slc_mago_armadura">
+                        <option value="Manto da Fenix">Manto da Fenix</option>
+                        <option value="Manto do Sabio">Manto do Sabio</option>
+                        <option value="Manto do oculto">Manto do oculto</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div>
+                <h2>Selecione uma raça</h2>
+                <select onclick="selecionar_raca()" id="slc_raca">
+                    <option value="#">Selecione</option>
+                    <option value="Humano">Humano</option>
+                    <option value="Elfo">Elfo</option>
+                    <option value="Meio-Orc">Meio-Orc</option>
+                </select>
+                <br><br>
+
+                <div id="msg_raca"></div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Destribuição de pontos de atributo</h2>
+            <div class="atributo">
+                <div class="atributo_item">
+                    <h3>Força</h3>
+                    <div class="atributo_pontos" id="vs_for_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_for_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_for_pontos , vs_for_bonus, 'meio-orc_for')"> Rolar Pontos</button>
+                </div>
+
+                <div class="atributo_item">
+                    <h3>Destreza</h3>
+                    <div class="atributo_pontos" id="vs_des_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_des_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_des_pontos , vs_des_bonus, 'elfo_des')"> Rolar Pontos</button>
+                </div>
+
+                <div class="atributo_item">
+                    <h3>Constituição</h3>
+                    <div class="atributo_pontos" id="vs_con_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_con_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_con_pontos , vs_con_bonus, 'meio-orc_con')"> Rolar Pontos</button>
+                </div>
+
+                <div class="atributo_item">
+                    <h3>Inteligência</h3>
+                    <div class="atributo_pontos" id="vs_int_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_int_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_int_pontos , vs_int_bonus, 'elfo_int')"> Rolar Pontos</button>
+                </div>
+
+                <div class="atributo_item">
+                    <h3>Sabedoria</h3>
+                    <div class="atributo_pontos" id="vs_sab_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_sab_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_sab_pontos , vs_sab_bonus)"> Rolar Pontos</button>
+                </div>
+
+                <div class="atributo_item">
+                    <h3>Carisma</h3>
+                    <div class="atributo_pontos" id="vs_car_pontos">
+                        8
+                    </div>
+                    <div class="atributo_bonus" id="vs_car_bonus">
+                        -1
+                    </div>
+
+                    <button onclick="rolar_pontos(vs_car_pontos , vs_car_bonus)"> Rolar Pontos</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+<script>
+    let lista = []
+    let listaArmas = [
+        { id_arma: 1, nome: 'arma', dano: "1", descricao: "elea é uma arma" },
+        { id_arma: 2, nome: 'arma2', dano: "1", descricao: "elea é uma arma" },
+        { id_arma: 3, nome: 'arma3', dano: "1", descricao: "elea é uma arma" },
+        { id_arma: 4, nome: 'arma4', dano: "1", descricao: "elea é uma arma" },
+    ]
+
+    function selecionar_classe2(){
+        let id_classe = Number(slc_classe.value);
+        let classe;
+
+        for(let i = 0; i < lista.length; i++){
+            
+            if(lista[i].id_classe == id_classe){
+                classe = lista[i];
+            }
+        }
+
+        if(classe != null) {
+            let optionArma;
+
+            for(let i = 0; i < listaArmas.length; i++){
+                optionArma += `<option value="${listaArmas[i].id_arma}">${listaArmas[i].nome}</option>`;
+            }
+
+            console.log('aqui foi');
+
+            info_classe.innerHTML = `
+                <h3>Equipamentos de ${classe.nome}</h3>
+                <select id="slc_arma">
+                    ${optionArma}
+                </select>
+                <select id="slc_armadura">
+                    <option value="Cota de Malha">Cota de Malha</option>
+                    <option value="Couro Batido">Couro Batido</option>
+                    <option value="Armadura de Placas">Armadura de Placas</option>
+                </select>`;
+
+        }
+    }
+
+    function selecionar_classe() {
+        equipamento_guerreiro.style.display = 'none';
+        equipamento_ladino.style.display = 'none';
+        equipamento_mago.style.display = 'none';
+
+         let guerreiro = {
+            descricao: 'Os humanos são bem versáteis.',
+            habilidade: [
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                },
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                }
+            ]
+        }
+        let ladino = {
+            descricao: 'Os Elfos são otimos Ladinos e Magos.',
+            habilidade: [
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                },
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                }
+            ]
+        }
+        let mago = {
+            descricao: 'Os Meio-Orcs são os melhores guerreiros.',
+            habilidade: [
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                },
+                { 
+                    nome: 'Surto de ação', 
+                    descricao: 'Surto de ação'
+                }
+            ]
+        }
+
+        if (slc_classe.value == 'Guerreiro') {
+            equipamento_guerreiro.style.display = 'block';
+        } else if (slc_classe.value == 'Ladino') {
+            equipamento_ladino.style.display = 'block';
+        } else if (slc_classe.value == 'Mago') {
+            equipamento_mago.style.display = 'block';
+        }
+    }
+
+    function selecionar_raca() {
+
+        let humano = {
+            atributo: '+1 em todas os atributos.',
+            descricao: 'Os humanos são bem versáteis.'
+        }
+        let elfo = {
+            atributo: '+2 em Destreza e +1 em Inteligência.',
+            descricao: 'Os Elfos são otimos Ladinos e Magos.'
+        }
+        let meio_orc = {
+            atributo: '+2 em Força e +1 em Constituição.',
+            descricao: 'Os Meio-Orcs são os melhores guerreiros.'
+        }
+
+        msg_raca.innerHTML = ''
+        if (slc_raca.value == 'Humano') {
+            msg_raca.innerHTML = `Atributo: ${humano.atributo} <br> Descrição: ${humano.descricao}`
+        } else if (slc_raca.value == 'Elfo') {
+            msg_raca.innerHTML = `Atributo: ${elfo.atributo} <br> Descrição: ${elfo.descricao}`
+        } else if (slc_raca.value == 'Meio-Orc') {
+            msg_raca.innerHTML = `Atributo: ${meio_orc.atributo} <br> Descrição: ${meio_orc.descricao}`
+        }
+    }
+
+    function rolar_pontos(n1, n2, n3) {
+        let pontos = Number((Math.random() * 8 + 8).toFixed(0));
+        let bonus
+
+        if (slc_raca.value == "Humano") {
+            pontos++
+        } else if (slc_raca.value == "Elfo") {
+            if (n3 == "elfo_des") {
+                pontos = pontos + 2
+            } else if (n3 == "elfo_int") {
+                pontos++
+            }
+
+        } else if (slc_raca.value == 'Meio-Orc') {
+            if (n3 == 'meio-orc_for') {
+                pontos = pontos + 2
+            } else if (n3 == 'meio-orc_con') {
+                pontos++
+            }
+        }
+
+        n1.innerHTML = pontos;
+
+        for (let i = 8; i <= pontos; i++) {
+            if (i == 8) {
+                bonus = -1
+            } else if (i == i && i % 2 == 0) {
+                bonus++
+            }
+        }
+
+        if (bonus > 0) {
+            n2.innerHTML = `+ ${bonus}`;
+        } else {
+            n2.innerHTML = `${bonus}`;
+        }
+    }
+
+    function listar_classes(){
+        fetch("/classe/listar", {
+            method: "GET"
+
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(classes){
+                    lista = classes;
+
+                    slc_classe.innerHTML += `<option value="#">Selecione</option>`
+
+                    for (var i = 0; i < lista.length; i++){
+                        let classe = lista[i];
+
+                        slc_classe.innerHTML += `<option value="${classe.id_classe}">${classe.nome}</option>`
+                    }
+
+                })
+            }
+
+
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+    }
+
+</script>
+
+</html>

@@ -1,82 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Ficha</title>
+    <link rel="stylesheet" href="style/estrutura.css">
+    <link rel="stylesheet" href="style/index.css">
 
-    <title>AquaTech | Página Inicial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
 
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+    <header>
+        <div class="logo_texto">
+            T<b>ROLL</b>
         </div>
-      </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-  </body>
+
+
+        <nav>
+            <a href="index.html" class="nav_select">
+                <img src="img/inicio-selecionado.svg" alt="icone de inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="como_jogar.html" class="nav_item">
+                <img src="img/como_jogar.svg" alt="icone de como_jogar">
+                <span>Como Jogar</span>
+            </a>
+            <a href="./ficha.html" class="nav_item">
+                <img src="img/criar_ficha.svg" alt="icone de ficha">
+                <span>Ficha</span>
+            </a>
+            <a href="login.html" class="btn_secundario">
+                <span>Entrar</span>
+            </a>
+            <a href="cadastro.html" class="btn_primario">
+                <span>Criar conta</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="apresentacao">
+            <h1>Descubra o RPG de Mesa de um Jeito Simples, Divertido e Imersivo</h1>
+            <p>
+                Crie sua ficha em poucos minutos e embarque em um mundo de histórias,
+                decisões épicas e aventuras inesquecíveis — tudo sem complicação.
+                <br>Aqui, qualquer pessoa pode começar a jogar, mesmo sem experiência!
+            </p>
+            <i><b>Embarque em aventuras épicas — mesmo sendo iniciante.</b></i>
+            <div class="apresentacao_btn">
+                <a href="como_jogar.html" class="btn_secundario">
+                    <span>Como jogar</span>
+                </a>
+                <a href="cadastro.html" class="btn_primario">
+                    <span>Criar conta</span>
+                </a>
+            </div>
+            <hr>
+        </section>
+
+        <section class="motivo">
+            <h2>Por que jogar RPG?</h2>
+            <div class="motivo_container">
+                <div class="motivo_item">
+                    <div class="motivo_img">
+                        <img src="img/criativo.svg">
+                    </div>
+                    <h3>Criatividade Sem Limites</h3>
+                    <p>Imagine mundos, crie personagens únicos e viva histórias que só existem porque você as inventou.
+                        O RPG é a forma mais divertida de soltar a imaginação.
+                    </p>
+                </div>
+                <div class="motivo_item">
+                    <div class="motivo_img">
+                        <img src="img/amigos.svg">
+                    </div>
+                    <h3>Conexões e Histórias Compartilhadas</h3>
+                    <p>Imagine mundos, crie personagens únicos e viva histórias que só existem porque você as inventou.
+                        O RPG é a forma mais divertida de soltar a imaginação.
+                    </p>
+                </div>
+                <div class="motivo_item">
+                    <div class="motivo_img">
+                        <img src="img/facil.svg">
+                    </div>
+                    <h3>Fácil de Começar</h3>
+                    <p>Imagine mundos, crie personagens únicos e viva histórias que só existem porque você as inventou.
+                        O RPG é a forma mais divertida de soltar a imaginação.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="oq_precisa">
+            <img src="img/ilustração-amigos.png">
+            <div class="oq_precisa_container">
+                <h2>Tudo Que Você Precisa Para Entrar Nesse Mundo</h2>
+                <p><b><i>Começar no RPG nunca foi tão simples. Aqui você aprende, cria e joga sem dificuldade.</i></b></p>
+                <div>
+                    <h3>Crie Seu Herói</h3>
+                    <p>Escolha uma raça, uma classe e pronto: seu personagem já ganha atributos, visual e estilo de jogo definidos. 
+                        Ideal para quem quer começar rápido.</p>
+                </div>
+                <div>
+                    <h3>Aprenda Sem Sofrer</h3>
+                    <p>Explicações claras, diretas e livres de termos complicados. 
+                       Em poucos minutos você entende como funciona uma sessão e o que faz cada personagem.</p>
+                </div>
+                <div>
+                    <h3>Viva Aventuras Incríveis</h3>
+                    <p>Com sua ficha pronta, você já pode reunir amigos, entrar em histórias emocionantes e
+                        descobrir um hobby que transforma qualquer encontro em algo inesquecível.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer_logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+        <nav>
+            <div class="nav_item">
+                <a href="">Inicio</a>
+            </div>
+            <div class="nav_item">
+                <a href="">Como Jogar</a>
+            </div>
+            <div class="nav_item">
+                <a href="">Ficha</a>
+            </div>
+        </nav>
+    </footer>
+
+</body>
 
 </html>

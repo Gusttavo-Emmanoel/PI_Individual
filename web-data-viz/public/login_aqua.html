@@ -6,53 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Troll</title>
+    <title>AquaTech | Login</title>
 
-    <script src="js/sessao.js"></script>
+    <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="css/estilo.css">
-    <link rel="stylesheet" href="style/estrutura.css">
-    <link rel="stylesheet" href="style/login.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
 
     <!--Header-->
 
-    <header>
-        <div class="logo_texto">
-            T<b>ROLL</b>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">AquaTech</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Inicial</a>
+                </li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
         </div>
+    </div>
 
 
-        <nav>
-            <a href="index.html" class="nav_item ">
-                <img src="img/inicio.svg" alt="icone de inicio">
-                <span>Inicio</span>
-            </a>
-            <a href="como_jogar.html" class=" nav_item">
-                <img src="img/como_jogar.svg" alt="icone de como_jogar">
-                <span>Como Jogar</span>
-            </a>
-            <a href="./ficha.html" class="nav_item">
-                <img src="img/criar_ficha.svg" alt="icone de ficha">
-                <span>Ficha</span>
-            </a>
-            <a href="login.html" class="btn_secundario btn_secundario_selecionado">
-                <span>Entrar</span>
-            </a>
-            <a href="cadastro.html" class="btn_primario">
-                <span>Criar conta</span>
-            </a>
-        </nav>
-    </header>
-
-    <main class="login">
+    <div class="login">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
@@ -80,26 +69,15 @@
                 <div id="div_erros_login"></div>
             </div>
         </div>
-    </main>
+    </div>
 
     <!--footer inicio-->
-    <footer>
-        <div class="footer_logo_texto">
-            T<b>ROLL</b>
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <span class="version">v1.0.0</span>
         </div>
-
-        <nav>
-            <div class="nav_item">
-                <a href="">Inicio</a>
-            </div>
-            <div class="nav_item">
-                <a href="">Como Jogar</a>
-            </div>
-            <div class="nav_item">
-                <a href="">Ficha</a>
-            </div>
-        </nav>
-    </footer>
+    </div>
     <!--footer fim-->
 
 </body>
@@ -144,16 +122,15 @@
                 console.log(resposta);
 
                 resposta.json().then(json => {
-
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    // sessionStorage.ID_USUARIO = json.id;
-                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./index.html";
+                        window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

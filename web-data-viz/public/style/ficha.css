@@ -1,0 +1,20 @@
+#equipamento_guerreiro{
+    display: none;
+}
+#equipamento_ladino{
+    display: none;
+}
+#equipamento_mago{
+    display: none;
+}
+
+
+.classe_raca{
+    display: flex;
+    justify-content: space-between;
+}
+
+.atributo{
+    display: flex;
+    justify-content: space-between;
+}
