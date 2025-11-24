@@ -22,6 +22,13 @@ var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
 var classeRouter = require("./src/routes/classe");
+var fichaRouter = require("./src/routes/ficha");
+var armaRouter = require("./src/routes/arma");
+var armaduraRouter = require("./src/routes/armadura");
+var racaRouter = require("./src/routes/raca");
+var armaClasseRouter = require("./src/routes/armaClasse");
+var armaduraClasseRouter = require("./src/routes/armaduraClasse");
+var atributoRouter = require("./src/routes/atributo");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,7 +42,14 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
-app.use("/classe", classeRouter);
+app.use("/classes", classeRouter);
+app.use("/fichas", fichaRouter);
+app.use("/armas", armaRouter);
+app.use("/armaduras", armaduraRouter);
+app.use("/racas", racaRouter);
+app.use("/armaClasses", armaClasseRouter);
+app.use("/armaduraClasses", armaduraClasseRouter);
+app.use("/atributos", atributoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

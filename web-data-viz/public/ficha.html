@@ -15,7 +15,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="listar_classes()">
+<body onload="listar_informacoes()">
    <header>
         <div class="logo_texto">
             T<b>ROLL</b>
@@ -56,70 +56,17 @@
         <section class="classe_raca">
             <div>
                 <h2>Selecione uma classe</h2>
-                <select onclick="selecionar_classe2()" id="slc_classe">
-                    <!-- <option value="#">Selecione</option>
-                    <option value="Guerreiro">Guerreiro</option>
-                    <option value="Ladino">Ladino</option>
-                    <option value="Mago">Mago</option> -->
+                <select onclick="selecionar_classe()" id="slc_classe">
                 </select>
 
                 <div id="info_classe">
 
                 </div>
 
-                <div id="equipamento_guerreiro">
-                    <h3>Equipamentos de Guerreiro</h3>
-                    <select id="slc_guerreiro_arma">
-                        <option value="Espada Longa">Espada Longa</option>
-                        <option value="Machado de Batalha">Machado de Batalha</option>
-                        <option value="Espada Curta">Espada Curta</option>
-                        <option value="2x Adagas">2x Adagas</option>
-                        <option value="Arco longo">Arco longo</option>
-                    </select>
-                    <select id="slc_guerreiro_armadura">
-                        <option value="Cota de Malha">Cota de Malha</option>
-                        <option value="Couro Batido">Couro Batido</option>
-                        <option value="Armadura de Placas">Armadura de Placas</option>
-                    </select>
-                </div>
-
-                <div id="equipamento_ladino">
-                    <h3>Equipamentos de Ladino</h3>
-                    <select id="slc_ladino_arma">
-                        <option value="2x Adagas">2x Adagas</option>
-                        <option value="Arco longo">Arco longo</option>
-                        <option value="Espada Curta">Espada Curta</option>
-                    </select>
-                    <select id="slc_ladino_armadura">
-                        <option value="Acolchoada">Acolchoada</option>
-                        <option value="Couro">Couro</option>
-                        <option value="Couro Batido">Couro Batido</option>
-                    </select>
-                </div>
-
-                <div id="equipamento_mago">
-                    <h3>Equipamentos de Mago</h3>
-                    <select id="slc_mago_arma">
-                        <option value="2x Adagas">2x Adagas</option>
-                        <option value="Livro de Magia">Livro de Magia</option>
-                        <option value="Orbe de Cristal">Orbe de Cristal</option>
-                    </select>
-                    <select id="slc_mago_armadura">
-                        <option value="Manto da Fenix">Manto da Fenix</option>
-                        <option value="Manto do Sabio">Manto do Sabio</option>
-                        <option value="Manto do oculto">Manto do oculto</option>
-                    </select>
-                </div>
-            </div>
-
 
             <div>
                 <h2>Selecione uma raça</h2>
                 <select onclick="selecionar_raca()" id="slc_raca">
-                    <option value="#">Selecione</option>
-                    <option value="Humano">Humano</option>
-                    <option value="Elfo">Elfo</option>
-                    <option value="Meio-Orc">Meio-Orc</option>
                 </select>
                 <br><br>
 
@@ -205,39 +152,46 @@
 
             </div>
 
+            <button onclick="salvar()">Salvar</button>
+
         </section>
 
     </main>
 
 </body>
 <script>
-    let lista = []
-    let listaArmas = [
-        { id_arma: 1, nome: 'arma', dano: "1", descricao: "elea é uma arma" },
-        { id_arma: 2, nome: 'arma2', dano: "1", descricao: "elea é uma arma" },
-        { id_arma: 3, nome: 'arma3', dano: "1", descricao: "elea é uma arma" },
-        { id_arma: 4, nome: 'arma4', dano: "1", descricao: "elea é uma arma" },
-    ]
+    let listaClasses = [];
+    let listaArmas = [];
+    let listaArmaduras = [];
+    let listaRaca = [];
 
-    function selecionar_classe2(){
+    function selecionar_classe(){
         let id_classe = Number(slc_classe.value);
         let classe;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < listaClasses.length; i++){
             
-            if(lista[i].id_classe == id_classe){
-                classe = lista[i];
+            if(listaClasses[i].id_classe == id_classe){
+                classe = listaClasses[i];
             }
         }
 
         if(classe != null) {
             let optionArma;
+            let optionArmadura;
 
-            for(let i = 0; i < listaArmas.length; i++){
-                optionArma += `<option value="${listaArmas[i].id_arma}">${listaArmas[i].nome}</option>`;
+            if(classe.listaArmas != null){
+                for(let i = 0; i < classe.listaArmas.length; i++){
+                    optionArma += `<option value="${classe.listaArmas[i].id_arma}">${classe.listaArmas[i].nome}</option>`;
+                }
             }
 
-            console.log('aqui foi');
+            if(classe.listaArmaduras != null){
+                for(let i = 0; i < classe.listaArmaduras.length; i++){
+                    optionArmadura += `<option value="${classe.listaArmaduras[i].id_armadura}">${classe.listaArmaduras[i].nome}</option>`;
+                }
+            }
+
 
             info_classe.innerHTML = `
                 <h3>Equipamentos de ${classe.nome}</h3>
@@ -245,65 +199,9 @@
                     ${optionArma}
                 </select>
                 <select id="slc_armadura">
-                    <option value="Cota de Malha">Cota de Malha</option>
-                    <option value="Couro Batido">Couro Batido</option>
-                    <option value="Armadura de Placas">Armadura de Placas</option>
+                    ${optionArmadura}
                 </select>`;
 
-        }
-    }
-
-    function selecionar_classe() {
-        equipamento_guerreiro.style.display = 'none';
-        equipamento_ladino.style.display = 'none';
-        equipamento_mago.style.display = 'none';
-
-         let guerreiro = {
-            descricao: 'Os humanos são bem versáteis.',
-            habilidade: [
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                },
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                }
-            ]
-        }
-        let ladino = {
-            descricao: 'Os Elfos são otimos Ladinos e Magos.',
-            habilidade: [
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                },
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                }
-            ]
-        }
-        let mago = {
-            descricao: 'Os Meio-Orcs são os melhores guerreiros.',
-            habilidade: [
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                },
-                { 
-                    nome: 'Surto de ação', 
-                    descricao: 'Surto de ação'
-                }
-            ]
-        }
-
-        if (slc_classe.value == 'Guerreiro') {
-            equipamento_guerreiro.style.display = 'block';
-        } else if (slc_classe.value == 'Ladino') {
-            equipamento_ladino.style.display = 'block';
-        } else if (slc_classe.value == 'Mago') {
-            equipamento_mago.style.display = 'block';
         }
     }
 
@@ -330,6 +228,10 @@
         } else if (slc_raca.value == 'Meio-Orc') {
             msg_raca.innerHTML = `Atributo: ${meio_orc.atributo} <br> Descrição: ${meio_orc.descricao}`
         }
+    }
+
+    function selecionar_raca2(){
+        console.log("selecionado")
     }
 
     function rolar_pontos(n1, n2, n3) {
@@ -364,25 +266,28 @@
         }
 
         if (bonus > 0) {
-            n2.innerHTML = `+ ${bonus}`;
+            n2.innerHTML = `+${bonus}`;
         } else {
             n2.innerHTML = `${bonus}`;
         }
     }
 
     function listar_classes(){
-        fetch("/classe/listar", {
+        fetch("/classes/listar", {
             method: "GET"
 
         }).then(function(resposta){
             if(resposta.ok){
                 resposta.json().then(function(classes){
-                    lista = classes;
+                    listaClasses = classes;
+                    
+                    listar_armas();
+                    listar_armaduras();
 
                     slc_classe.innerHTML += `<option value="#">Selecione</option>`
 
-                    for (var i = 0; i < lista.length; i++){
-                        let classe = lista[i];
+                    for (var i = 0; i < listaClasses.length; i++){
+                        let classe = listaClasses[i];
 
                         slc_classe.innerHTML += `<option value="${classe.id_classe}">${classe.nome}</option>`
                     }
@@ -392,6 +297,195 @@
 
 
         }).catch(function (erro) {
+            console.log(erro);
+        });
+    }
+
+    function listar_armas(){
+        fetch("/armas/listar", {
+            method: "GET"
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(armas){
+                    listaArmas = armas;
+
+                    listar_arma_classe();
+                })
+            }
+        });
+    }
+
+    function listar_arma_classe(){
+        fetch("/armaClasses/listar", {
+            method: "GET"
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(armasClasses){
+
+                    for(var i = 0; i < listaClasses.length; i++){
+                        var classe = listaClasses[i];
+
+                        classe.listaArmas = [];
+                        
+                        for(j = 0; j < armasClasses.length; j++){
+                            var armaClasse = armasClasses[j];
+                            
+                            if(classe.id_classe == armaClasse.fk_classe){
+                                
+                                for(k = 0; k < listaArmas.length; k++){
+                                    var arma = listaArmas[k];
+
+                                    if(armaClasse.fk_arma == arma.id_arma){
+                                        classe.listaArmas.push(arma);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+        });
+    }
+
+    function listar_armaduras(){
+        fetch("/armaduras/listar", {
+            method: "GET"
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(armaduras){
+                    listaArmaduras = armaduras;
+
+                    listar_armadura_classe();                    
+                })
+            }
+        });
+    }
+
+    function listar_armadura_classe(){
+        fetch("/armaduraClasses/listar", {
+            method: "GET"
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(armaduraClasses){
+
+                    for(var i = 0; i < listaClasses.length; i++){
+                        var classe = listaClasses[i];
+
+                        classe.listaArmaduras = [];
+                        
+                        for(j = 0; j < armaduraClasses.length; j++){
+                            var armaduraClasse = armaduraClasses[j];
+                            
+                            if(classe.id_classe == armaduraClasse.fk_classe){
+                                
+                                for(k = 0; k < listaArmaduras.length; k++){
+                                    var armadura = listaArmaduras[k];
+
+                                    if(armaduraClasse.fk_armadura == armadura.id_armadura){
+                                        classe.listaArmaduras.push(armadura);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+        });
+    }
+
+    function listar_racas(){
+        fetch("/racas/listar", {
+            method: "GET"
+
+        }).then(function(resposta){
+            if(resposta.ok){
+                resposta.json().then(function(raca){
+                    listaRaca = raca;
+
+                    slc_raca.innerHTML += `<option value="#">Selecione</option>`
+
+                    for (var i = 0; i < listaRaca.length; i++){
+                        let raca = listaRaca[i];
+
+                        slc_raca.innerHTML += `<option value="${raca.id_raca}">${raca.nome}</option>`
+                    }
+
+                })
+            }
+
+
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+    }
+
+    function listar_informacoes(){
+        listar_classes();
+        listar_racas();
+    }
+
+    function salvar(){
+        let forca = Number(document.getElementById('vs_for_pontos').textContent);
+        let destreza = Number(document.getElementById('vs_des_pontos').textContent);
+        let constituicao = Number(document.getElementById('vs_con_pontos').textContent);
+        let inteligencia = Number(document.getElementById('vs_int_pontos').textContent);
+        let sabedoria = Number(document.getElementById('vs_sab_pontos').textContent);
+        let carisma = Number(document.getElementById('vs_car_pontos').textContent);
+        
+        let ficha = {
+            nome: document.getElementById('ipt_nome').value,
+            fk_usuario: sessionStorage.ID_USUARIO,
+            fk_classe: slc_classe.value,
+            fk_raca: slc_raca.value,
+            atributo: {
+                forca: forca,
+                destreza: destreza,
+                constituicao: constituicao,
+                inteligencia: inteligencia,
+                sabedoria: sabedoria,
+                carisma: carisma
+            }
+        };
+
+        console.log(ficha);
+
+        salvar_atributo(ficha);
+    }
+
+    function salvar_atributo(ficha){
+        fetch("/atributos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(ficha.atributo)
+        
+        }).then(function(resposta){ 
+            resposta.json().then(function(resultado){
+                ficha.fk_atributo = resultado.insertId
+
+                salvar_ficha(ficha);
+            })
+
+        }).catch(function(erro){
+            console.log(erro);
+        });
+    }
+
+    function salvar_ficha(ficha){
+        fetch("/fichas/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(ficha)
+        
+        }).then(function(resposta){ 
+            resposta.json().then(function(resultado){
+                console.log(resultado.insertId)
+            })
+
+        }).catch(function(erro){
             console.log(erro);
         });
     }
