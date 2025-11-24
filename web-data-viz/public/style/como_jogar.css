@@ -1,0 +1,38 @@
+.apresentacao{
+    text-align: center;
+    font-size: 21px;
+}
+hr {
+    border-color: #F9D971;
+    background-color: #F9D971;
+    width: 100%;
+}
+
+.passos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.passos_item{
+    display: flex;
+    gap: 40px;
+    width: 60%;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    background-color: #F0E8DD;
+    border-radius: 15px;
+}
+
+.passos_ordem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9D971;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: 600;
+}
