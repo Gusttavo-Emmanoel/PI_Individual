@@ -6,13 +6,11 @@
   justify-content: center;
 }
 
-/* LOGIN */
-
-.card {
+.login_conatiner{
   width: 40%;
   background-color: #F0E8DD;
   border: 2px solid #8B4C4C;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,12 +26,11 @@
   width: 80%;
 }
 
-.formulario input {
+input {
   border: 2px solid #AD6B6B;
-  text-align: center;
+  padding-left: 15px;
   border-radius: 10px;
   height: 40px;
-  margin: 0;
 }
 
 .campo {
@@ -53,14 +50,26 @@
   width: 50px;
 }
 
-#div_erros_login {
-  display: none
+.cadastro{
+    display: flex;
+    gap: 10px;
 }
+.cadastro > a {
+   color: #803D3D !important;
+}
+.cadastro > a:hover{
+    text-decoration:underline;
+}
+
+/* #div_erros_login {
+  display: none
+} */
 
 /* Alert */
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
+  background-color: #ED145B;
 }
 
 .card_erro {

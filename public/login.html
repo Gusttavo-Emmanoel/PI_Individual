@@ -52,15 +52,19 @@
     </header>
 
     <main class="login">
+
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
         </div>
 
-        <div class="card">
+        <div class="login_conatiner">
+
             <h2>Bem vindo de Volta!</h2>
+
             <p>Entre para acessar ou criar suas fichas.</p>
+
             <div class="formulario">
                 <div class="campo">
                     <span>E-mail:</span>
@@ -71,9 +75,15 @@
                     <input id="senha_input" type="password" placeholder="******">
                 </div>
             </div>
+
             <button class="btn_primario" onclick="entrar()">
                 <span>Entrar</span>
             </button>
+
+            <div class="cadastro">
+                <p>Não tem uma conta?</p>
+                <a href="cadastro.html">Criar Conta</a>
+            </div>
 
             <div id="div_aguardar" class="loading-div">
                 <img src="./assets/circle-loading.gif" id="loading-gif">
