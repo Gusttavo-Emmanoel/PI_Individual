@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Troll</title>
+    <title>Troll | login</title>
 
     <script src="js/sessao.js"></script>
 
@@ -38,9 +38,9 @@
                 <img src="img/como_jogar.svg" alt="icone de como_jogar">
                 <span>Como Jogar</span>
             </a>
-            <a href="./ficha.html" class="nav_item">
-                <img src="img/criar_ficha.svg" alt="icone de ficha">
-                <span>Ficha</span>
+            <a href="./perfil.html" class="nav_item" id="perfil">
+                <img src="img/perfil.svg" alt="icone de ficha">
+                <span>Perfil</span>
             </a>
             <a href="login.html" class="btn_secundario btn_secundario_selecionado">
                 <span>Entrar</span>
@@ -164,7 +164,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./ficha.html";
+                        window.location = "./perfil.html";
                         setTimeout(finalizarAguardar(), 2000)
                     }, 1000); // apenas para exibir o loading
 

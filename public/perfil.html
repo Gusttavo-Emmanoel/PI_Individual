@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troll | Perfil</title>
+
+    <script src="js/sessao.js"></script>
+
+    <link rel="stylesheet" href="style/estrutura.css">
+    <link rel="stylesheet" href="style/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), validarNav()">
+    <header>
+        <div class="logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+        <nav>
+            <a href="index.html" class="nav_item" id="inicio">
+                <img src="img/inicio.svg" alt="icone de inicio">
+                <span>Inicio</span>
+            </a>
+            <a href="como_jogar.html" class=" nav_item" id="como_jogar">
+                <img src="img/como_jogar.svg" alt="icone de como_jogar">
+                <span>Como Jogar</span>
+            </a>
+            <a href="./perfil.html" class="nav_select" id="perfil">
+                <img src="img/perfil-selecionado.svg" alt="icone de perfil">
+                <span>Perfil</span>
+            </a>
+             <a onclick="limparSessao()" class="nav_item" id="sair">
+                <img src="img/sair.svg" alt="icone de sair">
+                <span>Sair</span>
+            </a>
+
+            <a href="login.html" class="btn_secundario btn_secundario_selecionado" id="login">
+                <span>Entrar</span>
+            </a>
+            <a href="cadastro.html" class="btn_primario" id="cadastrar">
+                <span>Criar conta</span>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <h1 id="b_usuario"> Nome</h1>
+    </main>
+
+
+</body>
+
+</html>

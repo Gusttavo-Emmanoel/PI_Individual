@@ -7,8 +7,33 @@ function validarSessao() {
 
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
+
     } else {
         window.location = "../login.html";
+    }
+}
+
+function validarNav() {
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    inicio.style.display = "flex";
+    como_jogar.style.display = "flex";
+
+    if (email != null && nome != null) {
+
+        perfil.style.display = "flex";
+        sair.style.display = "flex";
+
+        login.style.display = "none";
+        cadastrar.style.display = "none";
+
+    } else {
+        perfil.style.display = "none";
+        sair.style.display = "none";
+
+        login.style.display = "flex";
+        cadastrar.style.display = "flex";
+
     }
 }
 

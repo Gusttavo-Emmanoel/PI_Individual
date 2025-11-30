@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+
+    <script src="js/sessao.js"></script>
+
     <link rel="stylesheet" href="style/estrutura.css">
     <link rel="stylesheet" href="style/index.css">
 
@@ -16,7 +19,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="validarNav()">
+    
     <header>
         <div class="logo_texto">
             T<b>ROLL</b>
@@ -24,22 +28,27 @@
 
 
         <nav>
-            <a href="index.html" class="nav_select">
+            <a href="index.html" class="nav_select" id="inicio">
                 <img src="img/inicio-selecionado.svg" alt="icone de inicio">
                 <span>Inicio</span>
             </a>
-            <a href="como_jogar.html" class="nav_item">
+            <a href="como_jogar.html" class=" nav_item" id="como_jogar">
                 <img src="img/como_jogar.svg" alt="icone de como_jogar">
                 <span>Como Jogar</span>
             </a>
-            <a href="./ficha.html" class="nav_item">
-                <img src="img/criar_ficha.svg" alt="icone de ficha">
-                <span>Ficha</span>
+            <a href="./perfil.html" class="nav_item" id="perfil">
+                <img src="img/perfil.svg" alt="icone de perfil">
+                <span>Perfil</span>
             </a>
-            <a href="login.html" class="btn_secundario">
+             <a onclick="limparSessao()" class="nav_item" id="sair">
+                <img src="img/sair.svg" alt="icone de sair">
+                <span>Sair</span>
+            </a>
+
+            <a href="login.html" class="btn_secundario btn_secundario_selecionado" id="login">
                 <span>Entrar</span>
             </a>
-            <a href="cadastro.html" class="btn_primario">
+            <a href="cadastro.html" class="btn_primario" id="cadastrar">
                 <span>Criar conta</span>
             </a>
         </nav>
@@ -102,16 +111,18 @@
             <img src="img/ilustração-amigos.png">
             <div class="oq_precisa_container">
                 <h2>Tudo Que Você Precisa Para Entrar Nesse Mundo</h2>
-                <p><b><i>Começar no RPG nunca foi tão simples. Aqui você aprende, cria e joga sem dificuldade.</i></b></p>
+                <p><b><i>Começar no RPG nunca foi tão simples. Aqui você aprende, cria e joga sem dificuldade.</i></b>
+                </p>
                 <div>
                     <h3>Crie Seu Herói</h3>
-                    <p>Escolha uma raça, uma classe e pronto: seu personagem já ganha atributos, visual e estilo de jogo definidos. 
+                    <p>Escolha uma raça, uma classe e pronto: seu personagem já ganha atributos, visual e estilo de jogo
+                        definidos.
                         Ideal para quem quer começar rápido.</p>
                 </div>
                 <div>
                     <h3>Aprenda Sem Sofrer</h3>
-                    <p>Explicações claras, diretas e livres de termos complicados. 
-                       Em poucos minutos você entende como funciona uma sessão e o que faz cada personagem.</p>
+                    <p>Explicações claras, diretas e livres de termos complicados.
+                        Em poucos minutos você entende como funciona uma sessão e o que faz cada personagem.</p>
                 </div>
                 <div>
                     <h3>Viva Aventuras Incríveis</h3>

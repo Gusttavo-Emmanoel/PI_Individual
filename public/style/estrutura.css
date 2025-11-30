@@ -72,6 +72,10 @@ a>img {
     font-weight: 800;
 }
 
+#perfil, #sair, #login, #cadastrar{
+    display: none;
+}
+
 .btn_primario {
     display: flex;
     align-items: center;
