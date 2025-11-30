@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="validarNav()">
+<body onload="validarNav(), buscarInfoFicha()">
     <header>
         <div class="logo_texto">
             T<b>ROLL</b>
@@ -58,52 +58,45 @@
             <span>Voltar Para Perfil</span>
         </a>
 
-        <h1>Kleiton, O bom da guerra</h1>
+        <h1 id="fichaNome">Kleiton, O bom da guerra</h1>
 
         <section class="KPIs">
             <div class="KPI_item  info">
                 <div class="info_item">
-                    <img src="img/criar_ficha.svg">
-                    <span>Mago</span>
+                    <span id="fichaClasse">Mago</span>
                 </div>
                 <div class="info_item">
-                    <img src="img/criar_ficha.svg">
-                    <span>Elfo</span>
+                    <span id="fichaRaca">Elfo</span>
                 </div>
             </div>
 
             <div class="KPI_item">
                 <h2>Poder total</h2>
                 <div class="total-poder">
-                    <span>85</span>
+                    <span id="fichaPoder">85</span>
                 </div>
             </div>
 
             <div class="KPI_item">
                 <div class="status">
                     <div class="status_item">
-                        <img src="img/criar_ficha.svg">
                         <span>Pontos de vida</span>
                     </div>
-                    <span class="status_pontos">
-                        80
-                    </span>
+                    <span class="status_pontos" id="fichaVida">80</span>
                 </div>
                 <div class="status">
                     <div class="status_item">
-                        <img src="img/criar_ficha.svg">
                         <span>Classe de armadura (Defesa)</span>
                     </div>
-                    <span class="status_pontos">
+                    <span class="status_pontos" id="fichaCA">
                         16
                     </span>
                 </div>
                 <div class="status">
                     <div class="status_item">
-                        <img src="img/criar_ficha.svg">
                         <span>Iniciativa</span>
                     </div>
-                    <span class="status_pontos">
+                    <span class="status_pontos" id="fichaIniciativa">
                         +2
                     </span>
                 </div>
@@ -136,43 +129,43 @@
                         <div class="atributo">
                             Força (FOR)
                             <div class="atributo_item">
-                                <span>8</span>
-                                <span class="atributo_bonus">-1</span>
+                                <span id="pontoForca">8</span>
+                                <span class="atributo_bonus" id="bonusForca">-1</span>
                             </div>
                         </div>
                         <div class="atributo">
                             Destreza (DES)
                             <div class="atributo_item">
-                                <span>16</span>
-                                <span class="atributo_bonus">+3</span>
+                                <span id="pontoDestreza">16</span>
+                                <span class="atributo_bonus" id="bonusDestreza">+3</span>
                             </div>
                         </div>
                         <div class="atributo">
                             Constituição (CON)
                             <div class="atributo_item">
-                                <span>11</span>
-                                <span class="atributo_bonus">0</span>
+                                <span id="pontoConstituicao">11</span>
+                                <span class="atributo_bonus" id="bonusConstituicao">0</span>
                             </div>
                         </div>
                         <div class="atributo">
                             Inteligencia (INT)
                             <div class="atributo_item">
-                                <span>14</span>
-                                <span class="atributo_bonus">+2</span>
+                                <span id="pontoInteligencia">14</span>
+                                <span class="atributo_bonus" id="bonusInteligencia">+2</span>
                             </div>
                         </div>
                         <div class="atributo">
                             Sabedoria (SAB)
                             <div class="atributo_item">
-                                <span>15</span>
-                                <span class="atributo_bonus">+2</span>
+                                <span id="pontoSabedoria">15</span>
+                                <span class="atributo_bonus" id="bonusSabedoria">+2</span>
                             </div>
                         </div>
                         <div class="atributo">
                             Carisma (CAR)
                             <div class="atributo_item">
-                                <span>18</span>
-                                <span class="atributo_bonus">+4</span>
+                                <span id="pontoCarisma">18</span>
+                                <span class="atributo_bonus" id="bonusCarisma">+4</span>
                             </div>
                         </div>
                     </div>
@@ -182,18 +175,13 @@
 
                         <div class="equipamento-habilidade">
                             <H4>Equipamento Inicial</H4>
-                            <ul class="equipamento-habilidade_item">
-                                <li>Adagas (2x)</li>
-                                <li>Armadura de Couro</li>
-                                <li>Kit de Ferramentas</li>
+                            <ul class="equipamento-habilidade_item" id="armasArmaduras">
                             </ul>
 
                         </div>
                         <div class="equipamento-habilidade">
                             <H4>Habilidades Especiais</H4>
-                            <ul class="equipamento-habilidade_item">
-                                <li> Ataque Furtivo</li>
-                                <li>Ação Ardilosa</li>
+                            <ul class="equipamento-habilidade_item" id="habilidadesUl">
                             </ul>
                         </div>
                     </div>
@@ -223,78 +211,225 @@
 
 </body>
 <script>
-
     //Criação do gráfico de radar
     const ctx = document.getElementById('radarChart');
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: [
-                'Força',
-                'Destreza',
-                'Constituição',
-                'Inteligência',
-                'Sabedoria',
-                'Carisma',
-            ],
-            datasets: [{
-                data: [18, 14, 16, 15, 12, 13],
-                fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                },
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            elements: {
-                line: {
-                    borderWidth: 3
-                }
-            },
-            scales: {
-                r: {
-                    angleLines: {
-                        display: false
-                    },
-                    suggestedMin: 8,
-                    suggestedMax: 20
-                }
-            }
-        },
-    });
-
-
     const ctx2 = document.getElementById('barChart');
 
-    new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Ataque', 'Defesa', 'Velocidade'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            scales: {
-                y: {
-                    beginAtZero: true
+    let ficha;
+
+    function buscarInfoFicha() {
+        let idFicha = window.location.hash.substring(1);
+
+        fetch(`/fichas/buscarFicha/${idFicha}`, {
+            method: "GET"
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(function (fichas) {
+                    ficha = fichas[0];
+                    console.table(ficha);
+
+                    listarArmas(ficha.idClasse);
+                    listarArmaduras(ficha.idClasse);
+                    listarHabilidades(ficha.idClasse);
+
+                    atualizarDados();
+                })
+            }
+        });
+    }
+
+    function atualizarDados() {
+        var forca = ficha.forca;
+        var destreza = ficha.destreza;
+        var constituicao = ficha.constituicao;
+        var inteligencia = ficha.inteligencia;
+        var sabedoria = ficha.sabedoria;
+        var carisma = ficha.carisma;
+
+        var vtAtributos = [forca, destreza, constituicao, inteligencia, sabedoria, carisma];
+        var vtBonus = []
+
+        for (let i = 0; i < vtAtributos.length; i++) {
+            let pontos = vtAtributos[i]
+            let bonus;
+            for (let j = 8; j <= pontos; j++) {
+                if (j == 8) {
+                    bonus = -1
+                } else if (j == j && j % 2 == 0) {
+                    bonus++
                 }
             }
+            vtBonus.push(bonus)
         }
-    });
+
+        pontoForca.innerHTML = vtAtributos[0];
+        bonusForca.innerHTML = vtBonus[0];
+
+        pontoDestreza.innerHTML = vtAtributos[1];
+        bonusDestreza.innerHTML = vtBonus[1];
+
+        pontoConstituicao.innerHTML = vtAtributos[2];
+        bonusConstituicao.innerHTML = vtBonus[2];
+
+        pontoInteligencia.innerHTML = vtAtributos[3];
+        bonusInteligencia.innerHTML = vtBonus[3];
+
+        pontoSabedoria.innerHTML = vtAtributos[4];
+        bonusSabedoria.innerHTML = vtBonus[4];
+
+        pontoCarisma.innerHTML = vtAtributos[5];
+        bonusCarisma.innerHTML = vtBonus[5];
+
+        fichaNome.innerHTML = ficha.nomeFicha
+        fichaClasse.innerHTML = ficha.classeNome
+        fichaRaca.innerHTML = ficha.racaNome
+
+        poder = (((forca + destreza + constituicao + inteligencia + sabedoria + carisma) / 120) * 100).toFixed(0)
+        fichaPoder.innerHTML = poder
+
+        if (ficha.classeNome == 'Guerreiro') {
+            fichaVida.innerHTML = 10 + vtBonus[2];
+            fichaCA.innerHTML = 17
+
+        } else if (ficha.classeNome == 'Mago') {
+            fichaVida.innerHTML = 6 + vtBonus[2];
+            fichaCA.innerHTML = 12 + vtBonus[1]
+        } else {
+            fichaVida.innerHTML = 8 + vtBonus[2];
+            fichaCA.innerHTML = 10 + vtBonus[1]
+        }
+
+        fichaIniciativa.innerHTML = vtBonus[1]
+        
+
+
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Força',
+                    'Destreza',
+                    'Constituição',
+                    'Inteligência',
+                    'Sabedoria',
+                    'Carisma',
+                ],
+                datasets: [{
+                    data: vtAtributos,
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: false
+                        },
+                        suggestedMin: 8,
+                        suggestedMax: 20
+                    }
+                }
+            },
+        });
+
+
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Ataque', 'Defesa', 'Velocidade'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function listarArmas(idClasse) {
+        fetch(`/armas/listar/armaClasse/${idClasse}`, {
+            method: "GET"
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(function (armas) {
+                    if (armas.length > 0) {
+                        armasArmaduras.innerHTML += "<h4> Armas </h4>";
+                    }
+
+                    for (let i = 0; i < armas.length; i++) {
+                        armasArmaduras.innerHTML += `
+                            <li>${armas[i].nome}</li>
+                        `;
+                    }
+                })
+            }
+        });
+    }
+
+    function listarArmaduras(idClasse) {
+        fetch(`/armaduras/listar/armaduraClasse/${idClasse}`, {
+            method: "GET"
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(function (armaduras) {
+                    if (armaduras.length > 0) {
+                        armasArmaduras.innerHTML += "<h4> Armaduras </h4>";
+                    }
+
+                    for (let i = 0; i < armaduras.length; i++) {
+                        armasArmaduras.innerHTML += `
+                            <li>${armaduras[i].nome}</li>
+                        `;
+                    }
+
+                })
+            }
+        });
+    }
+
+    function listarHabilidades(idClasse) {
+        fetch(`/habilidades/listar/habilidadeClasse/${idClasse}`, {
+            method: "GET"
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(function (habilidades) {
+                    for (let i = 0; i < habilidades.length; i++) {
+                        habilidadesUl.innerHTML += `
+                            <li>${habilidades[i].nome}</li>
+                        `;
+                    }
+
+                })
+            }
+        });
+    }
+
 
 </script>
 

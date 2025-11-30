@@ -26,6 +26,7 @@ var racaRouter = require("./src/routes/raca");
 var armaClasseRouter = require("./src/routes/armaClasse");
 var armaduraClasseRouter = require("./src/routes/armaduraClasse");
 var atributoRouter = require("./src/routes/atributo");
+var habilidadeRouter = require("./src/routes/habilidade");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,6 +46,7 @@ app.use("/racas", racaRouter);
 app.use("/armaClasses", armaClasseRouter);
 app.use("/armaduraClasses", armaduraClasseRouter);
 app.use("/atributos", atributoRouter);
+app.use("/habilidades", habilidadeRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

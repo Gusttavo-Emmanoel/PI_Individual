@@ -132,7 +132,7 @@
 
                                 <hr>
 
-                                <a href="dashboard.html" class="btn_primario">
+                                <a onclick="visualizarFicha(${ficha.id_ficha})" class="btn_primario">
                                     <span>Visualizar Ficha</span>
                                 </a>
                             </div>`
@@ -152,6 +152,10 @@
                     </div>`;
             }
         });
+    }
+
+    function visualizarFicha(idFicha) {
+        window.location = "./dashboard.html#" + idFicha;
     }
 </script>
 

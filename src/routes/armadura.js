@@ -7,4 +7,8 @@ router.get("/listar", function(req, res){
     armaduraController.listar(req, res);
 });
 
+router.get("/listar/armaduraClasse/:idClasse", function(req, res){
+    armaduraController.listar(req, res);
+});
+
 module.exports = router;

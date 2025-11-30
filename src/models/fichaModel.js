@@ -30,6 +30,27 @@ function listarPorId(id_usuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarFicha(idFicha) {
+    var instrucaoSql = `
+        SELECT ficha.id_ficha, ficha.nome AS nomeFicha, 
+            raca.nome AS racaNome, raca.atributo AS racaAtributo, raca.descricao AS racaDescricao,
+            atributo.forca, atributo.destreza, atributo.constituicao, atributo.inteligencia, atributo.sabedoria, atributo.carisma, 
+            classe.id_classe AS idClasse, classe.nome AS classeNome, classe.vida AS classeVida, classe.descricao AS classeDescricao 
+            FROM ficha 
+        LEFT JOIN usuario 
+            ON usuario.id_usuario = ficha.fk_usuario
+        LEFT JOIN raca 
+            ON raca.id_raca = ficha.fk_raca
+        LEFT JOIN atributo 
+            ON atributo.id_atributo = ficha.fk_atributo
+        LEFT JOIN classe 
+            ON classe.id_classe = ficha.fk_classe
+        WHERE ficha.id_ficha = ${idFicha};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 
 function cadastrar(ficha) {
@@ -43,5 +64,6 @@ function cadastrar(ficha) {
 module.exports = {
     listar,
     listarPorId,
-    cadastrar
+    cadastrar,
+    buscarFicha
 };

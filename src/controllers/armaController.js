@@ -10,6 +10,19 @@ function listar(req, res){
     });
 }
 
+function listarPorIdClasse(req, res){
+    let idClasse = req.params.idClasse;
+
+    armaModel.listarPorIdClasse(idClasse).then(function(resultado){
+        res.json(resultado)
+
+    }).catch(function(erro){
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
-    listar
+    listar,
+    listarPorIdClasse
 }

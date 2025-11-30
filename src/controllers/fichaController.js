@@ -27,6 +27,24 @@ function listarPorId(req, res){
     });
 }
 
+function buscarFicha(req, res){
+
+    let idFicha = Number(req.params.idFicha);
+    console.log("Está passando aqui", idFicha);
+
+    fichaModel.buscarFicha(idFicha).then(function(resultado){
+        if (resultado.length > 0) {
+          res.status(200).json(resultado);
+        } else {
+          res.status(204).json([]);
+        }
+
+    }).catch(function(erro){
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function cadastrar(req, res) {
     var ficha = req.body;
   
@@ -46,8 +64,10 @@ function cadastrar(req, res) {
     
 }
 
+//Exportar as funções que foi criada
 module.exports = {
     listar,
     listarPorId,
-    cadastrar
+    cadastrar,
+    buscarFicha
 }

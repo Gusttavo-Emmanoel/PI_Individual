@@ -12,6 +12,10 @@ router.get("/:idUsuario", function(req, res){
     fichaController.listarPorId(req, res);
 });
 
+router.get("/buscarFicha/:idFicha", function(req, res){
+    fichaController.buscarFicha(req, res);
+});
+
 router.post("/cadastrar", function (req, res) {
     fichaController.cadastrar(req, res);
 });
