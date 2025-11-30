@@ -9,7 +9,7 @@
     <script src="js/sessao.js"></script>
 
     <link rel="stylesheet" href="style/estrutura.css">
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/perfil.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
                 <img src="img/perfil-selecionado.svg" alt="icone de perfil">
                 <span>Perfil</span>
             </a>
-             <a onclick="limparSessao()" class="nav_item" id="sair">
+            <a onclick="limparSessao()" class="nav_item" id="sair">
                 <img src="img/sair.svg" alt="icone de sair">
                 <span>Sair</span>
             </a>
@@ -50,8 +50,65 @@
         </nav>
     </header>
     <main>
-        <h1 id="b_usuario"> Nome</h1>
+        <section class="usuario">
+            <div class="usuario_container">
+                <h1>Usuário: <span id="b_usuario"></span></h1>
+                <p><b>0</b> personagens criados.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="ficha_head">
+                <h2>Minhas Fichas</h2>
+                <a href="ficha.html" class="btn_primario">
+                    <span>+ Criar Nova Ficha</span>
+                </a>
+            </div>
+
+            <div class="ficha_body">
+
+                <div class="ficha_item">
+                    <h3>Nome</h3>
+                    <p>Classe: <b></b></p>
+                    <p>Raça: <b></b></p>
+
+                    <hr>
+
+                    <a href="dashboard.html" class="btn_primario">
+                        <span>Visualizar Ficha</span>
+                    </a>
+                </div>
+                
+
+                <!-- <div class="sem_ficha">
+                    <h3>Nenhum personagem ainda ?</h3>
+                    <p>Comece sua jornada criando seu primeiro personagem de RPG!</p>
+                    <a href="ficha.html" class="btn_primario">
+                        <span>Criar Primeiro Personagem</span>
+                    </a>
+                </div>
+            </div> -->
+
+        </section>
+
     </main>
+    <!--footer inicio-->
+    <footer>
+        <div class="footer_logo_texto">
+            T<b>ROLL</b>
+        </div>
+
+        <nav>
+            <div class="nav_item">
+                <a href="index.html">Inicio</a>
+            </div>
+            |
+            <div class="nav_item">
+                <a href="como_jogar.html">Como Jogar</a>
+            </div>
+        </nav>
+    </footer>
+    <!--footer fim-->
 
 
 </body>
