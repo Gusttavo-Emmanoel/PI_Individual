@@ -1,20 +1,95 @@
-#equipamento_guerreiro{
+#equipamento_guerreiro {
     display: none;
 }
-#equipamento_ladino{
+
+#equipamento_ladino {
     display: none;
 }
-#equipamento_mago{
+
+#equipamento_mago {
     display: none;
 }
 
 
-.classe_raca{
+.ficha_nome {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ficha_nome>input {
+    border: 2px solid #AD6B6B;
+    padding-left: 15px;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.ficha_info {
     display: flex;
     justify-content: space-between;
 }
 
-.atributo{
+.ficha_info_item{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 45%;
+    background-color: #F0E8DD;
+    border-radius: 15px;
+    border: 2px solid #AD6B6B;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.ficha_info_item > select{
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.info_classe{
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
+}
+
+.atributo {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.atributo_item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    padding: 20px;
+    background-color: #F0E8DD;
+    border: 2px solid #AD6B6B;
+    border-radius: 15px;
+}
+
+.atributo_pontos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: #F8F4EF;
+    border: 2px solid #AD6B6B;
+    border-radius: 5px;
+}
+
+.atributo_bonus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 25px;
+    background-color: #F8F4EF;
+    border: 2px solid #AD6B6B;
+    border-radius: 5px;
 }

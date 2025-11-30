@@ -34,7 +34,7 @@ function listarPorId(id_usuario) {
 
 function cadastrar(ficha) {
     var instrucaoSql = `INSERT INTO ficha (nome, fk_usuario, fk_classe, fk_raca, fk_atributo) 
-    VALUES ('${ficha.nome}', ${ficha.fk_usuario}, ${ficha.fk_classe}, ${ficha.fk_raca}, ${ficha.fk_atributo})`;
+    VALUES ('${ficha.nome}', ${ficha.id_usuario}, ${ficha.id_classe}, ${ficha.id_raca}, ${ficha.id_atributo})`;
   
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

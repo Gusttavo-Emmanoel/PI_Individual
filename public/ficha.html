@@ -7,7 +7,7 @@
     <title>Ficha</title>
 
     <script src="js/sessao.js"></script>
-    
+
     <link rel="stylesheet" href="style/estrutura.css">
     <link rel="stylesheet" href="style/ficha.css">
 
@@ -52,7 +52,7 @@
     </header>
 
     <main>
-         <a href="perfil.html" class="btn_secundario voltar_item">
+        <a href="perfil.html" class="btn_secundario voltar_item">
             <span>Voltar Para Perfil</span>
         </a>
 
@@ -60,29 +60,26 @@
             <h1>Criação de Ficha</h1>
         </section>
 
-        <section>
-            Informe o nome de seu personagem: <input id="ipt_nome">
+        <section class="ficha_nome">
+            <b>Informe o nome de seu personagem</b>
+            <input id="ipt_nome" placeholder="Digite o Nome">
         </section>
 
-        <section class="classe_raca">
-            <div>
+        <section class="ficha_info">
+            <div class="ficha_info_item">
                 <h2>Selecione uma classe</h2>
-                <select onclick="selecionar_classe()" id="slc_classe">
-                </select>
+                <select onclick="selecionar_classe()" id="slc_classe"></select>
 
-                <div id="info_classe">
+                <div id="info_classe"></div>
 
-                </div>
-
-
-            <div>
+            </div>
+            <div class="ficha_info_item">
                 <h2>Selecione uma raça</h2>
                 <select onclick="selecionar_raca()" id="slc_raca">
                 </select>
                 <br><br>
 
                 <div id="msg_raca"></div>
-
             </div>
         </section>
 
@@ -98,7 +95,7 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_for_pontos , vs_for_bonus, 'meio-orc_for')"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_for_pontos , vs_for_bonus, 'meio-orc_for')" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
                 <div class="atributo_item">
@@ -110,7 +107,7 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_des_pontos , vs_des_bonus, 'elfo_des')"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_des_pontos , vs_des_bonus, 'elfo_des')" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
                 <div class="atributo_item">
@@ -122,7 +119,7 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_con_pontos , vs_con_bonus, 'meio-orc_con')"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_con_pontos , vs_con_bonus, 'meio-orc_con')" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
                 <div class="atributo_item">
@@ -134,7 +131,7 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_int_pontos , vs_int_bonus, 'elfo_int')"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_int_pontos , vs_int_bonus, 'elfo_int')" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
                 <div class="atributo_item">
@@ -146,7 +143,7 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_sab_pontos , vs_sab_bonus)"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_sab_pontos , vs_sab_bonus)" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
                 <div class="atributo_item">
@@ -158,18 +155,18 @@
                         -1
                     </div>
 
-                    <button onclick="rolar_pontos(vs_car_pontos , vs_car_bonus)"> Rolar Pontos</button>
+                    <button onclick="rolar_pontos(vs_car_pontos , vs_car_bonus)" class="btn_primario"><span>Rolar Pontos</span></button>
                 </div>
 
             </div>
 
-            <button onclick="salvar()">Salvar</button>
+            <button onclick="salvar()" class="btn_primario"><span>Criar Ficha</span></button>
 
         </section>
 
     </main>
 
-     <!--footer inicio-->
+    <!--footer inicio-->
     <footer>
         <div class="footer_logo_texto">
             T<b>ROLL</b>
@@ -194,42 +191,49 @@
     let listaArmaduras = [];
     let listaRaca = [];
 
-    function selecionar_classe(){
+    function selecionar_classe() {
         let id_classe = Number(slc_classe.value);
         let classe;
 
-        for(let i = 0; i < listaClasses.length; i++){
-            
-            if(listaClasses[i].id_classe == id_classe){
+        for (let i = 0; i < listaClasses.length; i++) {
+
+            if (listaClasses[i].id_classe == id_classe) {
                 classe = listaClasses[i];
             }
         }
 
-        if(classe != null) {
+        if (classe != null) {
             let optionArma;
             let optionArmadura;
 
-            if(classe.listaArmas != null){
-                for(let i = 0; i < classe.listaArmas.length; i++){
-                    optionArma += `<option value="${classe.listaArmas[i].id_arma}">${classe.listaArmas[i].nome}</option>`;
+            if (classe.listaArmas != null) {
+                for (let i = 0; i < classe.listaArmas.length; i++) {
+                    optionArma += `${classe.listaArmas[i].nome}<br>`;
                 }
             }
 
-            if(classe.listaArmaduras != null){
-                for(let i = 0; i < classe.listaArmaduras.length; i++){
-                    optionArmadura += `<option value="${classe.listaArmaduras[i].id_armadura}">${classe.listaArmaduras[i].nome}</option>`;
+            if (classe.listaArmaduras != null) {
+                for (let i = 0; i < classe.listaArmaduras.length; i++) {
+                    optionArmadura += `${classe.listaArmaduras[i].nome}<br>`;
                 }
             }
 
-
+            console.table(listaArmas);
             info_classe.innerHTML = `
                 <h3>Equipamentos de ${classe.nome}</h3>
-                <select id="slc_arma">
+                <div class="info_classe">
+                <div>
+                 <h4> Armas </h4>
                     ${optionArma}
-                </select>
-                <select id="slc_armadura">
+
+                </div>
+
+                <div>
+                <h4>Armaduras</h4>
                     ${optionArmadura}
-                </select>`;
+                </div>
+                </div>
+                `;
 
         }
     }
@@ -257,10 +261,6 @@
         } else if (slc_raca.value == 'Meio-Orc') {
             msg_raca.innerHTML = `Atributo: ${meio_orc.atributo} <br> Descrição: ${meio_orc.descricao}`
         }
-    }
-
-    function selecionar_raca2(){
-        console.log("selecionado")
     }
 
     function rolar_pontos(n1, n2, n3) {
@@ -301,21 +301,21 @@
         }
     }
 
-    function listar_classes(){
+    function listar_classes() {
         fetch("/classes/listar", {
             method: "GET"
 
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(classes){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (classes) {
                     listaClasses = classes;
-                    
+
                     listar_armas();
                     listar_armaduras();
 
                     slc_classe.innerHTML += `<option value="#">Selecione</option>`
 
-                    for (var i = 0; i < listaClasses.length; i++){
+                    for (var i = 0; i < listaClasses.length; i++) {
                         let classe = listaClasses[i];
 
                         slc_classe.innerHTML += `<option value="${classe.id_classe}">${classe.nome}</option>`
@@ -330,12 +330,12 @@
         });
     }
 
-    function listar_armas(){
+    function listar_armas() {
         fetch("/armas/listar", {
             method: "GET"
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(armas){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (armas) {
                     listaArmas = armas;
 
                     listar_arma_classe();
@@ -344,27 +344,27 @@
         });
     }
 
-    function listar_arma_classe(){
+    function listar_arma_classe() {
         fetch("/armaClasses/listar", {
             method: "GET"
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(armasClasses){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (armasClasses) {
 
-                    for(var i = 0; i < listaClasses.length; i++){
+                    for (var i = 0; i < listaClasses.length; i++) {
                         var classe = listaClasses[i];
 
                         classe.listaArmas = [];
-                        
-                        for(j = 0; j < armasClasses.length; j++){
+
+                        for (j = 0; j < armasClasses.length; j++) {
                             var armaClasse = armasClasses[j];
-                            
-                            if(classe.id_classe == armaClasse.fk_classe){
-                                
-                                for(k = 0; k < listaArmas.length; k++){
+
+                            if (classe.id_classe == armaClasse.fk_classe) {
+
+                                for (k = 0; k < listaArmas.length; k++) {
                                     var arma = listaArmas[k];
 
-                                    if(armaClasse.fk_arma == arma.id_arma){
+                                    if (armaClasse.fk_arma == arma.id_arma) {
                                         classe.listaArmas.push(arma);
                                     }
                                 }
@@ -376,41 +376,41 @@
         });
     }
 
-    function listar_armaduras(){
+    function listar_armaduras() {
         fetch("/armaduras/listar", {
             method: "GET"
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(armaduras){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (armaduras) {
                     listaArmaduras = armaduras;
 
-                    listar_armadura_classe();                    
+                    listar_armadura_classe();
                 })
             }
         });
     }
 
-    function listar_armadura_classe(){
+    function listar_armadura_classe() {
         fetch("/armaduraClasses/listar", {
             method: "GET"
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(armaduraClasses){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (armaduraClasses) {
 
-                    for(var i = 0; i < listaClasses.length; i++){
+                    for (var i = 0; i < listaClasses.length; i++) {
                         var classe = listaClasses[i];
 
                         classe.listaArmaduras = [];
-                        
-                        for(j = 0; j < armaduraClasses.length; j++){
+
+                        for (j = 0; j < armaduraClasses.length; j++) {
                             var armaduraClasse = armaduraClasses[j];
-                            
-                            if(classe.id_classe == armaduraClasse.fk_classe){
-                                
-                                for(k = 0; k < listaArmaduras.length; k++){
+
+                            if (classe.id_classe == armaduraClasse.fk_classe) {
+
+                                for (k = 0; k < listaArmaduras.length; k++) {
                                     var armadura = listaArmaduras[k];
 
-                                    if(armaduraClasse.fk_armadura == armadura.id_armadura){
+                                    if (armaduraClasse.fk_armadura == armadura.id_armadura) {
                                         classe.listaArmaduras.push(armadura);
                                     }
                                 }
@@ -422,18 +422,18 @@
         });
     }
 
-    function listar_racas(){
+    function listar_racas() {
         fetch("/racas/listar", {
             method: "GET"
 
-        }).then(function(resposta){
-            if(resposta.ok){
-                resposta.json().then(function(raca){
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (raca) {
                     listaRaca = raca;
 
                     slc_raca.innerHTML += `<option value="#">Selecione</option>`
 
-                    for (var i = 0; i < listaRaca.length; i++){
+                    for (var i = 0; i < listaRaca.length; i++) {
                         let raca = listaRaca[i];
 
                         slc_raca.innerHTML += `<option value="${raca.id_raca}">${raca.nome}</option>`
@@ -448,25 +448,25 @@
         });
     }
 
-    function listar_informacoes(){
+    function listar_informacoes() {
         listar_classes();
         listar_racas();
         validarNav();
     }
 
-    function salvar(){
+    function salvar() {
         let forca = Number(document.getElementById('vs_for_pontos').textContent);
         let destreza = Number(document.getElementById('vs_des_pontos').textContent);
         let constituicao = Number(document.getElementById('vs_con_pontos').textContent);
         let inteligencia = Number(document.getElementById('vs_int_pontos').textContent);
         let sabedoria = Number(document.getElementById('vs_sab_pontos').textContent);
         let carisma = Number(document.getElementById('vs_car_pontos').textContent);
-        
+
         let ficha = {
             nome: document.getElementById('ipt_nome').value,
-            fk_usuario: sessionStorage.ID_USUARIO,
-            fk_classe: slc_classe.value,
-            fk_raca: slc_raca.value,
+            id_usuario: sessionStorage.ID_USUARIO,
+            id_classe: slc_classe.value,
+            id_raca: slc_raca.value,
             atributo: {
                 forca: forca,
                 destreza: destreza,
@@ -482,40 +482,40 @@
         salvar_atributo(ficha);
     }
 
-    function salvar_atributo(ficha){
+    function salvar_atributo(ficha) {
         fetch("/atributos/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(ficha.atributo)
-        
-        }).then(function(resposta){ 
-            resposta.json().then(function(resultado){
+
+        }).then(function (resposta) {
+            resposta.json().then(function (resultado) {
                 ficha.fk_atributo = resultado.insertId
 
                 salvar_ficha(ficha);
             })
 
-        }).catch(function(erro){
+        }).catch(function (erro) {
             console.log(erro);
         });
     }
 
-    function salvar_ficha(ficha){
+    function salvar_ficha(ficha) {
         fetch("/fichas/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(ficha)
-        
-        }).then(function(resposta){ 
-            resposta.json().then(function(resultado){
+
+        }).then(function (resposta) {
+            resposta.json().then(function (resultado) {
                 console.log(resultado.insertId)
             })
 
-        }).catch(function(erro){
+        }).catch(function (erro) {
             console.log(erro);
         });
     }

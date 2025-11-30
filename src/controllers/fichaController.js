@@ -11,8 +11,9 @@ function listar(req, res){
 }
 
 function listarPorId(req, res){
-    let idUsuario = req.param.idUsuario;
+    let idUsuario = Number(req.params.idUsuario);
 
+    console.log(idUsuario);
     fichaModel.listarPorId(idUsuario).then(function(resultado){
         if (resultado.length > 0) {
           res.status(200).json(resultado);

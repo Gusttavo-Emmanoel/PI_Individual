@@ -17,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), validarNav()">
+<body onload="validarSessao(), validarNav(), listarFichas()">
     <header>
         <div class="logo_texto">
             T<b>ROLL</b>
@@ -53,7 +53,7 @@
         <section class="usuario">
             <div class="usuario_container">
                 <h1>Usuário: <span id="b_usuario"></span></h1>
-                <p><b>0</b> personagens criados.</p>
+                <p><b id="qtFichas">0</b> personagens criados.</p>
             </div>
         </section>
 
@@ -65,9 +65,9 @@
                 </a>
             </div>
 
-            <div class="ficha_body">
+            <div class="ficha_body" id="ficha_body">
 
-                <div class="ficha_item">
+                <!-- <div class="ficha_item">
                     <h3>Nome</h3>
                     <p>Classe: <b></b></p>
                     <p>Raça: <b></b></p>
@@ -77,17 +77,11 @@
                     <a href="dashboard.html" class="btn_primario">
                         <span>Visualizar Ficha</span>
                     </a>
-                </div>
-                
+                </div> -->
 
-                <!-- <div class="sem_ficha">
-                    <h3>Nenhum personagem ainda ?</h3>
-                    <p>Comece sua jornada criando seu primeiro personagem de RPG!</p>
-                    <a href="ficha.html" class="btn_primario">
-                        <span>Criar Primeiro Personagem</span>
-                    </a>
-                </div>
-            </div> -->
+
+
+            </div>
 
         </section>
 
@@ -112,5 +106,53 @@
 
 
 </body>
+<script>
+    function listarFichas() {
+        let idUsuario = Number(sessionStorage.ID_USUARIO)
+
+        console.log('Chegoi aqui', idUsuario);
+
+        fetch(`/fichas/${idUsuario}`, {
+            method: "GET"
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(function (fichas) {
+                    qtFichas.innerHTML = fichas.length
+
+                    if (fichas.length > 0) {
+
+                        for (let i = 0; i < fichas.length; i++) {
+                            let ficha = fichas[i];
+
+                            ficha_body.innerHTML += `
+                            <div class="ficha_item" id="ficha_${ficha.id_ficha}">
+                                <h3>${ficha.nomeFicha}</h3>
+                                <p>Classe: <b>${ficha.classeNome}</b></p>
+                                <p>Raça: <b>${ficha.racaNome}</b></p>
+
+                                <hr>
+
+                                <a href="dashboard.html" class="btn_primario">
+                                    <span>Visualizar Ficha</span>
+                                </a>
+                            </div>`
+                        }
+                    }
+                })
+            } else {
+                qtFichas.innerHTML = 0;
+
+                ficha_body.innerHTML += `
+                    <div class="sem_ficha">
+                        <h3>Nenhum personagem ainda ?</h3>
+                        <p>Comece sua jornada criando seu primeiro personagem de RPG!</p>
+                        <a href="ficha.html" class="btn_primario">
+                            <span>Criar Primeiro Personagem</span>
+                        </a>
+                    </div>`;
+            }
+        });
+    }
+</script>
 
 </html>

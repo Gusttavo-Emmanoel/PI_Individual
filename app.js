@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
+// Define as base das rotas
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);

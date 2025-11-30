@@ -7,6 +7,7 @@ router.get("/listar", function(req, res){
     fichaController.listar(req, res);
 });
 
+//Rota para executar a listagem das fichas pelo o Id do usuario.
 router.get("/:idUsuario", function(req, res){
     fichaController.listarPorId(req, res);
 });

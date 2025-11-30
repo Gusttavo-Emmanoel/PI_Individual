@@ -16,6 +16,7 @@ function validarSessao() {
 function validarNav() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    
     inicio.style.display = "flex";
     como_jogar.style.display = "flex";
 
