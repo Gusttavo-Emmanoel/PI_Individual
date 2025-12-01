@@ -287,20 +287,38 @@
         poder = (((forca + destreza + constituicao + inteligencia + sabedoria + carisma) / 120) * 100).toFixed(0)
         fichaPoder.innerHTML = poder
 
+        let ataque;
+        let defesa;
+        let velocidade;
+
         if (ficha.classeNome == 'Guerreiro') {
             fichaVida.innerHTML = 10 + vtBonus[2];
             fichaCA.innerHTML = 17
 
+            ataque = forca + constituicao;
+            defesa = destreza + constituicao;
+            velocidade = destreza;
+
+
         } else if (ficha.classeNome == 'Mago') {
             fichaVida.innerHTML = 6 + vtBonus[2];
             fichaCA.innerHTML = 12 + vtBonus[1]
+
+            ataque = 2 * inteligencia;
+            defesa = destreza;
+            velocidade = destreza;
+
         } else {
             fichaVida.innerHTML = 8 + vtBonus[2];
             fichaCA.innerHTML = 10 + vtBonus[1]
+
+            ataque = 2 * destreza ;
+            defesa = destreza;
+            velocidade = destreza;
         }
 
         fichaIniciativa.innerHTML = vtBonus[1]
-        
+
 
 
         new Chart(ctx, {
@@ -356,8 +374,8 @@
             data: {
                 labels: ['Ataque', 'Defesa', 'Velocidade'],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3],
+                    label: 'Pontos',
+                    data: [ataque, defesa, velocidade],
                     borderWidth: 1
                 }]
             },
